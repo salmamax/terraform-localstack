@@ -17,12 +17,14 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: "1.7.0"  # Versión estable más reciente
+          terraform_version: "1.7.0"
 
-      - name: Install AWS CLI (for LocalStack)
+      - name: Install AWS CLI (correct method)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y awscli
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          aws --version
 
       - name: Configure AWS CLI for LocalStack
         run: |
@@ -39,6 +41,9 @@ jobs:
             -p 4566:4566 \
             -e SERVICES=s3,ec2 \
             localstack/localstack
+
+      - name: Wait for LocalStack to be ready
+        run: sleep 15  # Da a LocalStack tiempo para iniciarse
 
       - name: Terraform Init
         run: terraform init
