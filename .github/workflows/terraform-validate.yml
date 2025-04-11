@@ -1,0 +1,26 @@
+name: Terraform Validate
+on:
+  push:
+    branches: [ "main" ]  # Se activa al hacer push a la rama main
+  pull_request:           # También se ejecuta en PRs
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Validate Terraform
+    runs-on: ubuntu-latest  # Usamos un runner de GitHub con Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4  # Descarga el código del repositorio
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3  # Instala Terraform automáticamente
+        with:
+          terraform_version: "1.7.0"  # Usamos la versión estable más reciente
+
+      - name: Terraform Init
+        run: terraform init  # Inicializa Terraform (descarga proveedores)
+
+      - name: Terraform Validate
+        run: terraform validate  # Valida la sintaxis del código
