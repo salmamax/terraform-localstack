@@ -71,3 +71,9 @@ output "arn_bucket_desde_modulo" {
    value = module.mi_bucket_s3.bucket_arn
  }
 # Comentario de prueba
+
+terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+}

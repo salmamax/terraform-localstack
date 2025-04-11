@@ -15,3 +15,4 @@ terraform.tfvars
 # Archivos temporales
 *.log
 *.tmp
+temp-file.txt
