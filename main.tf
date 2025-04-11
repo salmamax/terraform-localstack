@@ -70,3 +70,4 @@ output "arn_bucket_desde_modulo" {
    # Accedemos a la salida "bucket_arn" definida en outputs.tf del módulo
    value = module.mi_bucket_s3.bucket_arn
  }
+# Comentario de prueba
