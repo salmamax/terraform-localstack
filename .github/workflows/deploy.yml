@@ -19,15 +19,20 @@ jobs:
         with:
           terraform_version: "1.7.0"
 
-      - name: Install AWS CLI (correct method)
-        run: |
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install
-          aws --version
-
       - name: Configure AWS CLI for LocalStack
         run: |
+          # Verifica si AWS CLI ya está instalado
+          if ! command -v aws &> /dev/null; then
+            echo "Installing AWS CLI..."
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+          else
+            echo "AWS CLI ya está instalado, versión:"
+            aws --version
+          fi
+
+          # Configuración para LocalStack
           aws configure --profile localstack <<EOF
           test
           test
@@ -43,10 +48,13 @@ jobs:
             localstack/localstack
 
       - name: Wait for LocalStack to be ready
-        run: sleep 15  # Da a LocalStack tiempo para iniciarse
+        run: sleep 15
 
       - name: Terraform Init
         run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
 
       - name: Terraform Plan
         run: terraform plan
