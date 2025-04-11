@@ -1,4 +1,4 @@
-# Terraform files
+# Terraform
 .terraform/
 *.tfstate
 *.tfstate.*
@@ -6,5 +6,12 @@
 terraform.tfvars
 .terraform.tfstate.lock.info
 
-# LocalStack files
+# Proveedores de Terraform
+*.tfprovider
+
+# LocalStack
 .localstack/
+
+# Archivos temporales
+*.log
+*.tmp
