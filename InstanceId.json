@@ -1,0 +1,112 @@
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-12345678",
+                    "InstanceId": "i-37625e9717cbd449b",
+                    "InstanceType": "t2.micro",
+                    "KernelId": "None",
+                    "LaunchTime": "2025-04-10T11:31:02Z",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1a",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-10-98-82-199.ec2.internal",
+                    "PrivateIpAddress": "10.98.82.199",
+                    "PublicDnsName": "ec2-54-214-18-223.compute-1.amazonaws.com",
+                    "PublicIpAddress": "54.214.18.223",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-1d2f21028c6169336",
+                    "VpcId": "vpc-b8d9bb6ca1fac1779",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/sda1",
+                            "Ebs": {
+                                "AttachTime": "2025-04-10T11:31:02Z",
+                                "DeleteOnTermination": true,
+                                "Status": "in-use",
+                                "VolumeId": "vol-a7c3ac2b50f86a000"
+                            }
+                        }
+                    ],
+                    "ClientToken": "ABCDE0000000000003",
+                    "EbsOptimized": false,
+                    "Hypervisor": "xen",
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "000000000000",
+                                "PublicIp": "54.214.18.223"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2015-01-01T00:00:00Z",
+                                "AttachmentId": "eni-attach-cfc493a34e4132ce9",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached"
+                            },
+                            "Description": "Primary network interface",
+                            "Groups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-4894f8849d035c9dc"
+                                }
+                            ],
+                            "MacAddress": "1b:2b:3c:4d:5e:6f",
+                            "NetworkInterfaceId": "eni-3c181cbe15ad4bc5e",
+                            "OwnerId": "000000000000",
+                            "PrivateIpAddress": "10.98.82.199",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "000000000000",
+                                        "PublicIp": "54.214.18.223"
+                                    },
+                                    "Primary": true,
+                                    "PrivateIpAddress": "10.98.82.199"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-1d2f21028c6169336",
+                            "VpcId": "vpc-b8d9bb6ca1fac1779"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/sda1",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [],
+                    "SourceDestCheck": true,
+                    "StateReason": {
+                        "Code": "",
+                        "Message": ""
+                    },
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "MiInstanciaTerraformLocal"
+                        }
+                    ],
+                    "VirtualizationType": "paravirtual",
+                    "HibernationOptions": {
+                        "Configured": false
+                    }
+                }
+            ],
+            "OwnerId": "000000000000",
+            "ReservationId": "r-3832aaaac0929f9d7"
+        }
+    ]
+}
+

@@ -1,0 +1,50 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0" # Mantenemos la versión compatible que ya usábamos
+    }
+  }
+}
+
+provider "aws" {
+  region                      = "us-east-1"
+  access_key                  = "admin"     # Credenciales para LocalStack
+  secret_key                  = "admin"     # Credenciales para LocalStack
+  skip_credentials_validation = true
+  skip_metadata_api_check     = true
+  skip_requesting_account_id  = true
+  s3_use_path_style           = true      # Importante para LocalStack S3
+
+  # ACTUALIZADO: Añadimos el endpoint para EC2
+  endpoints {
+    s3  = "http://localhost:4566"
+    ec2 = "http://localhost:4566" # <--- NUEVA LÍNEA
+  }
+}
+
+# Mantenemos nuestro recurso S3 bucket
+resource "aws_s3_bucket" "mi_primer_bucket" {
+  bucket        = "mi-bucket-prueba-${formatdate("YYYYMMDD", timestamp())}"
+  force_destroy = true # Permite borrar el bucket aunque no esté vacío
+}
+
+# NUEVO: Definimos una instancia EC2 simulada
+resource "aws_instance" "mi_instancia_local" {
+  ami           = "ami-12345678" # Usamos un ID de AMI placeholder, LocalStack no la usa realmente
+  instance_type = "t2.small" # <--- LÍNEA MODIFICADA
+
+  tags = {
+    Name = "MiInstanciaTerraformLocal"
+  }
+}
+
+# Mantenemos nuestro output para el bucket
+output "bucket_name" {
+  value = aws_s3_bucket.mi_primer_bucket.bucket
+}
+
+# NUEVO: Añadimos un output para el ID de la instancia EC2
+output "instance_id" {
+  value = aws_instance.mi_instancia_local.id
+}
