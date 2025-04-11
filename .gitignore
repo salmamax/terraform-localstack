@@ -1,0 +1,10 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+terraform.tfvars
+.terraform.tfstate.lock.info
+
+# LocalStack files
+.localstack/
